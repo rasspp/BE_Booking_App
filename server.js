@@ -6,12 +6,13 @@ import eventRoutes from "./routes/eventRoutes.js";
 
 const app = express();
 const port = process.env.PORT || 3000;
+const db = process.env.DB;
 
 app.use(express.json());
 app.use(cors());
 
 mongoose.set("strictQuery", false);
-mongoose.connect("mongodb://127.0.0.1:27017/form_calendar", {
+mongoose.connect(db, {
    useNewUrlParser: true,
    useUnifiedTopology: true,
 });
