@@ -3,6 +3,9 @@ import mongoose from "mongoose";
 import cors from "cors";
 import authRoutes from "./routes/authRoutes.js";
 import eventRoutes from "./routes/eventRoutes.js";
+import dotenv from "dotenv";
+
+dotenv.config();
 
 const app = express();
 const port = process.env.PORT || 3000;
@@ -21,5 +24,5 @@ app.use("/auth", authRoutes);
 app.use("/api", eventRoutes);
 
 app.listen(port, () => {
-   console.log(`Server berjalan di http://localhost:${port}0`);
+   console.log(`Server berjalan di http://localhost:${port}`);
 });
