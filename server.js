@@ -21,5 +21,5 @@ app.use("/auth", authRoutes);
 app.use("/api", eventRoutes);
 
 app.listen(port, () => {
-   console.log(`Server berjalan di http://localhost:${port}`);
+   console.log(`Server berjalan di http://localhost:${port}0`);
 });
