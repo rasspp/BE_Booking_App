@@ -7,6 +7,14 @@ import dotenv from "dotenv";
 
 dotenv.config();
 
+const app = express();
+const port = process.env.PORT || 3000;
+const db = process.env.DB;
+
+// Middleware untuk mengizinkan CORS
+app.use(cors());
+
+// Middleware untuk mengizinkan CORS dari origin tertentu
 app.use((req, res, next) => {
    res.header("Access-Control-Allow-Origin", "http://localhost:5173");
    res.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE");
@@ -15,12 +23,7 @@ app.use((req, res, next) => {
    next();
 });
 
-const app = express();
-const port = process.env.PORT || 3000;
-const db = process.env.DB;
-
 app.use(express.json());
-app.use(cors());
 
 app.use("/auth", authRoutes);
 app.use("/api", eventRoutes);
