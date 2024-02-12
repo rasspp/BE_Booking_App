@@ -9,7 +9,7 @@ dotenv.config();
 
 const app = express();
 const port = process.env.PORT || 3000;
-const db = process.env.DB;
+const db = process.env.MONGO_URI;
 
 // Middleware untuk mengizinkan CORS
 app.use(cors());
