@@ -7,7 +7,6 @@ export const addEvent = async (req, res) => {
       const newEvent = new Event({
          title,
          customerName,
-         email,
          phoneNumber,
          guestCount,
          start,
@@ -43,6 +42,27 @@ export const deleteEvent = async (req, res) => {
       }
 
       res.json({ message: "Acara berhasil dihapus", deletedEvent });
+   } catch (error) {
+      res.status(500).json({ error: error.message });
+   }
+};
+
+export const updateEventStatus = async (req, res) => {
+   const eventId = req.params.id;
+   const newStatus = req.body.status;
+
+   try {
+      const updatedEvent = await Event.findByIdAndUpdate(
+         eventId,
+         { $set: { status: newStatus } },
+         { new: true } // Mengembalikan dokumen yang telah diperbarui
+      );
+
+      if (!updatedEvent) {
+         return res.status(404).json({ message: "Acara tidak ditemukan" });
+      }
+
+      res.json({ message: "Status acara berhasil diperbarui", updatedEvent });
    } catch (error) {
       res.status(500).json({ error: error.message });
    }
