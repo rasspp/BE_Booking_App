@@ -9,9 +9,9 @@ dotenv.config();
 
 const app = express();
 const port = process.env.PORT || 3000;
-// const db = process.env.MONGO_URI;
+const db = process.env.MONGO_URI;
 // DB Local
-const db = process.env.DBLOCAL;
+// const db = process.env.DBLOCAL;
 
 app.use(cors());
 
