@@ -1,6 +1,6 @@
-import Event from "../models/eventModel.js";
+const Event = require("../models/eventModel.js");
 
-export const addEvent = async (req, res) => {
+const addEvent = async (req, res) => {
    try {
       const { title, customerName, email, phoneNumber, guestCount, start, end, status, linkDocumentation, testimonial } = req.body;
       const { address, cityName, postalCode, note } = req.body.location;
@@ -20,7 +20,7 @@ export const addEvent = async (req, res) => {
             note,
          },
          linkDocumentation,
-         testimonial
+         testimonial,
       });
 
       await newEvent.save();
@@ -31,7 +31,7 @@ export const addEvent = async (req, res) => {
    }
 };
 
-export const getEvents = async (req, res) => {
+const getEvents = async (req, res) => {
    try {
       const events = await Event.find();
       res.json(events);
@@ -40,7 +40,7 @@ export const getEvents = async (req, res) => {
    }
 };
 
-export const getEventById = async (req, res) => {
+const getEventById = async (req, res) => {
    const eventId = req.params.id;
 
    try {
@@ -56,7 +56,7 @@ export const getEventById = async (req, res) => {
    }
 };
 
-export const deleteEvent = async (req, res) => {
+const deleteEvent = async (req, res) => {
    const eventId = req.params.id;
 
    try {
@@ -72,7 +72,7 @@ export const deleteEvent = async (req, res) => {
    }
 };
 
-export const updateEvent = async (req, res) => {
+const updateEvent = async (req, res) => {
    const eventId = req.params.id;
    const { title, customerName, email, phoneNumber, guestCount, start, end, status, linkDocumentation, testimonial } = req.body;
    const { address, cityName, postalCode, note } = req.body.location;
@@ -97,7 +97,7 @@ export const updateEvent = async (req, res) => {
                   note,
                },
                linkDocumentation,
-               testimonial
+               testimonial,
             },
          },
          { new: true }
@@ -111,4 +111,12 @@ export const updateEvent = async (req, res) => {
    } catch (error) {
       res.status(500).json({ error: error.message });
    }
+};
+
+module.exports = {
+   addEvent,
+   getEvents,
+   getEventById,
+   deleteEvent,
+   updateEvent,
 };

@@ -1,9 +1,9 @@
-import express from "express";
-import mongoose from "mongoose";
-import cors from "cors";
-import authRoutes from "./routes/authRoutes.js";
-import eventRoutes from "./routes/eventRoutes.js";
-import dotenv from "dotenv";
+const express = require("express");
+const mongoose = require("mongoose");
+const cors = require("cors");
+const authRoutes = require("./routes/authRoutes.js");
+const eventRoutes = require("./routes/eventRoutes.js");
+const dotenv = require("dotenv");
 
 dotenv.config();
 
