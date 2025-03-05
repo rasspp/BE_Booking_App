@@ -2,10 +2,10 @@
   "name": "booking_app",
   "version": "1.0.0",
   "description": "Backend MERN dengan autentikasi",
-  "main": "server.cjs",
+  "main": "server.js",
   "scripts": {
-    "start": "node server.cjs",
-    "server": "nodemon server.cjs"
+    "start": "node server.js",
+    "server": "nodemon server.js"
   },
   "keywords": [
     "MERN",
